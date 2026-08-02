@@ -1,20 +1,29 @@
 # 🛡️ Hate Speech Detection App
 
-A Streamlit web application for detecting hate speech in text using a distilled BERT-base model.
+A Streamlit web app that detects hate speech in text using a lightweight, distilled BERT model. It takes a research model all the way to a working app anyone can use.
 
 ---
 
 ## ⚠️ Important Notice
 
-**This application is part of an ongoing research project.** The model and code are provided for **research and educational purposes only**. 
+**This app is part of an ongoing research project.** It is for **research and educational use only.**
 
-**Prohibited Uses:**
+**Do not use it for:**
 - ❌ Generating hate speech or toxic content
-- ❌ Using for harassment or abuse
-- ❌ Misusing to harm individuals or communities
-- ❌ Circumventing content policies on platforms
+- ❌ Harassment or abuse
+- ❌ Harming individuals or communities
+- ❌ Getting around platform content rules
 
-**Misuse of this model is strictly prohibited.**
+**Misuse is strictly prohibited.**
+
+---
+
+## 🎯 Why I Built This
+
+- Big language models detect hate speech well, but they are too heavy to run in real time.
+- I compressed a large model into a small, fast one that keeps almost the same accuracy.
+- Then I turned it into a simple web app so anyone can try it — not just a notebook.
+- Hate speech detection is a real problem, so it felt worth solving.
 
 ---
 
@@ -28,59 +37,66 @@ A Streamlit web application for detecting hate speech in text using a distilled 
 
 ---
 
+## 🧠 Skills I Used
+
+- **Machine Learning:** knowledge distillation (making a small model learn from a big one)
+- **NLP:** fine-tuning a BERT model with Hugging Face
+- **Model compression:** keeping accuracy while making the model smaller and faster
+- **Evaluation:** measuring accuracy, ROC-AUC, and tuning the threshold
+- **Deployment:** building the app with Streamlit
+- **Good practices:** clean code, clear setup, and documentation
+
+---
+
+## 📈 What I Learned
+
+- How to take a model from research all the way to a real, working app.
+- How model distillation actually works, by building it myself.
+- How to judge a model properly — not just by accuracy, but ROC-AUC too.
+- How to think about responsible AI and prevent misuse.
+- How to finish a full project end to end, on my own.
+
+---
+
 ## 📁 Setup
 
-### Prerequisites
-- Python 3.9+
-- pip
-
-### Installation
+**Prerequisites:** Python 3.9+ and pip
 
 **Windows:**
 ```powershell
-git clone https://github.com/sanjida-khanom/hate-speech-detection.git
-cd hate-speech-detection
-
+git clone https://github.com/sanjida-khanom/hate_speech_app.git
+cd hate_speech_app
 python -m venv venv
 venv\Scripts\Activate.ps1
-
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
 **Linux/macOS:**
 ```bash
-git clone https://github.com/sanjida-khanom/hate-speech-detection.git
-cd hate-speech-detection
-
+git clone https://github.com/sanjida-khanom/hate_speech_app.git
+cd hate_speech_app
 python3 -m venv venv
 source venv/bin/activate
-
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Access the app at: **http://localhost:8501**
+Open the app at: **http://localhost:8501**
 
 ---
 
-## 📦 Getting Model Weights
+## 📦 Model Weights
 
-The trained model weights (`student_best.pt`, ~418 MB) are available upon request from the authors:
-
-- **Sanjida Khanom** — [@sanjida-khanom](https://github.com/sanjida-khanom)
-- **Mohammod Ashikur Rahman** — [@ashikbuilds](https://github.com/ashikbuilds)
-
-Place `student_best.pt` in the project root folder.
+The trained weights (`student_best.pt`, ~418 MB) are available on request from the authors. Place the file in the project root folder.
 
 ---
 
-## 🖥️ Using the App
+## 🖥️ How to Use
 
-1. Enter text in the input field
-2. Click "Analyze"
-3. View prediction (Hate Speech / Non-Hate)
-4. See confidence score
+1. Type or paste text in the input box
+2. Click **Analyze**
+3. See the result (Hate Speech / Non-Hate) and the confidence score
 
 ---
 
@@ -112,8 +128,6 @@ sacremoses>=0.0.53
 
 This project is part of ongoing research on model compression and ensemble learning. **Publication is pending.**
 
-For academic use, please cite appropriately and contact the authors for more details.
-
 ---
 
 ## 👥 Authors
@@ -123,6 +137,3 @@ For academic use, please cite appropriately and contact the authors for more det
 - Mohammod Ashikur Rahman ([@ashikbuilds](https://github.com/ashikbuilds))
 
 ---
-
-
-**Last Updated:** August 2024
