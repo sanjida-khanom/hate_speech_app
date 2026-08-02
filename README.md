@@ -69,7 +69,7 @@ Access the app at: **http://localhost:8501**
 The trained model weights (`student_best.pt`, ~418 MB) are available upon request from the authors:
 
 - **Sanjida Khanom** — [@sanjida-khanom](https://github.com/sanjida-khanom)
-- **Ashik Rahman** — [@ashikbuilds](https://github.com/ashikbuilds)
+- **Mohammod Ashikur Rahman** — [@ashikbuilds](https://github.com/ashikbuilds)
 
 Place `student_best.pt` in the project root folder.
 
@@ -120,12 +120,9 @@ For academic use, please cite appropriately and contact the authors for more det
 
 **Equal contribution:**
 - Sanjida Khanom ([@sanjida-khanom](https://github.com/sanjida-khanom))
-- Ashik Rahman ([@ashikbuilds](https://github.com/ashikbuilds))
+- Mohammod Ashikur Rahman ([@ashikbuilds](https://github.com/ashikbuilds))
 
 ---
 
-
-
----
 
 **Last Updated:** August 2024
