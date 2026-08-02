@@ -18,7 +18,14 @@ A Streamlit web app that detects hate speech in text using a lightweight, distil
 
 ---
 
-## 🎯 Why I Built This
+## 👥 Authors
+
+**Equal contribution:**
+- Sanjida Khanom ([@sanjida-khanom](https://github.com/sanjida-khanom))
+- Mohammod Ashikur Rahman ([@ashikbuilds](https://github.com/ashikbuilds))
+---
+
+## 🎯 Why we Built This
 
 - Big language models detect hate speech well, but they are too heavy to run in real time.
 - I compressed a large model into a small, fast one that keeps almost the same accuracy.
@@ -37,7 +44,7 @@ A Streamlit web app that detects hate speech in text using a lightweight, distil
 
 ---
 
-## 🧠 Skills I Used
+## 🧠 Skills we Used
 
 - **Machine Learning:** knowledge distillation (making a small model learn from a big one)
 - **NLP:** fine-tuning a BERT model with Hugging Face
@@ -48,7 +55,7 @@ A Streamlit web app that detects hate speech in text using a lightweight, distil
 
 ---
 
-## 📈 What I Learned
+## 📈 What we've Learned
 
 - How to take a model from research all the way to a real, working app.
 - How model distillation actually works, by building it myself.
@@ -127,13 +134,5 @@ sacremoses>=0.0.53
 ## 🔬 Research Status
 
 This project is part of ongoing research on model compression and ensemble learning. **Publication is pending.**
-
----
-
-## 👥 Authors
-
-**Equal contribution:**
-- Sanjida Khanom ([@sanjida-khanom](https://github.com/sanjida-khanom))
-- Mohammod Ashikur Rahman ([@ashikbuilds](https://github.com/ashikbuilds))
 
 ---
