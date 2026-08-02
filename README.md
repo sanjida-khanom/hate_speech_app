@@ -1,14 +1,14 @@
-# 🛡️ Monolingual Hate Speech Detector
+# 🛡️ Bilingual Hate Speech Detector(Bangla/English)
 
 A Streamlit web app for real-time hate speech detection, powered by a **distilled BERT-base** student model trained via **Knowledge Distillation** from a three-model teacher ensemble (BERT + XLM-RoBERTa + DeBERTa).
 
 | Metric | Value |
 |---|---|
-| Accuracy | 91.51% |
-| AUC | 0.9669 |
+| Accuracy | 91.04% |
+| AUC | 0.9652 |
 | ECE (calibration) | 0.034 |
 | Parameters | 109M |
-| Decision threshold | 0.51 (from threshold tuning) |
+| Decision threshold | 0.48 (from threshold tuning) |
 
 ---
 
@@ -161,7 +161,7 @@ Python 3.9+ recommended.
 This project was developed as a **team effort**, with full and equal credit shared between:
 
 - **Sanjida Khanom** — [@sanjida-khanom](https://github.com/sanjida-khanom)
-- **Ashik** — [@ashikbuilds]([https://github.com/ashikbuilds](https://github.com/ashikbuilds))
+- **Ashik** — [@ashikbuilds]((https://github.com/ashikbuilds )
 
 For access to the model weights or any questions, feel free to reach out to either author.
 
