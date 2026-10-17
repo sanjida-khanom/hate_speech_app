@@ -50,3 +50,14 @@ BACKEND = os.getenv("HSD_BACKEND", "model")
 
 # ---- published results (shown on the Research page) ---------------------
 METRICS_PATH = os.getenv("HSD_METRICS_PATH", "results/metrics.json")
+
+# ---- people (shown in the sidebar, header and Research page) --------------
+AUTHORS = [
+    {"name": "Mohammod Ashikur Rahman", "role": "Software Engineer L1", "org": "bKash Limited",
+     "github": "https://github.com/ashikbuilds"},
+    {"name": "Sanjida Khanom", "role": "Research Assistant", "org": "Department of CSE, BUBT",
+     "github": "https://github.com/sanjida-khanom"},
+]
+EQUAL_CONTRIBUTION = True
+SUPERVISOR = {"name": "Md. Ashiqur Rahman", "role": "Assistant Professor",
+              "org": "Department of CSE, Bangladesh University of Business and Technology (BUBT)"}

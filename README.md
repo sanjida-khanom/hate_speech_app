@@ -19,7 +19,7 @@ A BERT + XLM-RoBERTa + DeBERTa ensemble is distilled into one BERT-base student 
 Bangla text is translated to English first, and every prediction comes with an explanation and an
 uncertainty estimate.
 
-**Live demo:** https://huggingface.co/spaces/sanjida-khanom/hate-speech-detector
+**Live demo:** https://sanjida-hate-speech.streamlit.app
 
 | Metric | Value |
 |---|---|
@@ -37,8 +37,12 @@ or evade platform rules. Predictions can be wrong; a human should review real mo
 
 ## 👥 Authors
 
-Equal contribution: **Sanjida Khanom** ([@sanjida-khanom](https://github.com/sanjida-khanom)) and
-**Mohammod Ashikur Rahman** ([@ashikbuilds](https://github.com/ashikbuilds)).
+**Mohammod Ashikur Rahman** — Software Engineer L1, bKash Limited ([@ashikbuilds](https://github.com/ashikbuilds))
+**Sanjida Khanom** — Research Assistant, Department of CSE, BUBT ([@sanjida-khanom](https://github.com/sanjida-khanom))
+*(equal contribution)*
+
+**Supervisor:** Md. Ashiqur Rahman, Assistant Professor, Department of CSE,
+Bangladesh University of Business and Technology (BUBT)
 
 ## What the app does
 
@@ -91,7 +95,7 @@ on first start. They are available from the authors on request.
 
 ## Deployment
 
-Every push to `main` runs the tests and redeploys the Space automatically. See [DEPLOY.md](DEPLOY.md).
+Hosted free on Streamlit Community Cloud. Every push to `main` runs the tests and redeploys the app automatically. See [DEPLOY.md](DEPLOY.md).
 
 ## Research status
 

@@ -48,11 +48,13 @@ def resolve_weights() -> str:
     """Local file first, then a one-time cached download from the Hub."""
     if os.path.isfile(config.LOCAL_WEIGHTS):
         return config.LOCAL_WEIGHTS
-    if config.HUB_REPO:
+    # read at call time, so secrets added after start-up are picked up
+    hub_repo = config._setting("HSD_MODEL_REPO")
+    if hub_repo:
         from huggingface_hub import hf_hub_download
 
         return hf_hub_download(
-            repo_id=config.HUB_REPO,
+            repo_id=hub_repo,
             filename=config.HUB_FILE,
             token=config._setting("HF_TOKEN") or None,
         )

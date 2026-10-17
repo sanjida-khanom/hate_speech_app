@@ -104,6 +104,7 @@ def analyze(raw: str, classifier, get_translator, *, mc: bool = True, explain: b
             "hi": float(np.percentile(samples, 97.5)),
             "stability": float(agree),
             "passes": int(len(samples)),
+            "samples": [float(x) for x in samples],
         }
 
     if explain:
