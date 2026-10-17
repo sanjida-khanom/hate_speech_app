@@ -19,7 +19,7 @@ A BERT + XLM-RoBERTa + DeBERTa ensemble is distilled into one BERT-base student 
 Bangla text is translated to English first, and every prediction comes with an explanation and an
 uncertainty estimate.
 
-**Live demo:** https://sanjida-hate-speech.streamlit.app
+**Live demo:** https://sadiamehrinrahi-rt-deepnids.hf.space/
 
 | Metric | Value |
 |---|---|
