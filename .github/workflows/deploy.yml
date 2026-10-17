@@ -1,4 +1,4 @@
-name: Test and deploy to Hugging Face
+name: Test (and optionally deploy to Hugging Face)
 
 on:
   push:
@@ -24,8 +24,12 @@ jobs:
           HSD_BACKEND: stub
         run: pytest -q
 
+  # Hugging Face Docker Spaces need a PRO plan. This job runs only when the
+  # repository variable DEPLOY_TARGET is set to "huggingface". With Streamlit
+  # Community Cloud, no job is needed: it redeploys on every push by itself.
   deploy:
     needs: test
+    if: ${{ vars.DEPLOY_TARGET == 'huggingface' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

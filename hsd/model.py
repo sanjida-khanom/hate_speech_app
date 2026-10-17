@@ -54,7 +54,7 @@ def resolve_weights() -> str:
         return hf_hub_download(
             repo_id=config.HUB_REPO,
             filename=config.HUB_FILE,
-            token=os.getenv("HF_TOKEN") or None,
+            token=config._setting("HF_TOKEN") or None,
         )
     raise WeightsNotFound(
         f"No weights at '{config.LOCAL_WEIGHTS}' and HSD_MODEL_REPO is not set."

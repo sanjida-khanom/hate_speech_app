@@ -3,6 +3,24 @@ variable, so the same code runs locally, in CI and on Hugging Face Spaces."""
 
 import os
 
+
+def _setting(name: str, default: str = "") -> str:
+    """Environment variable first (Docker, Hugging Face, local), then
+    Streamlit secrets (Streamlit Community Cloud's Secrets box)."""
+    if os.getenv(name):
+        return os.environ[name]
+    try:
+        import streamlit as st
+
+        value = st.secrets.get(name)
+        if value:
+            os.environ.setdefault(name, str(value))  # visible to hf_hub_download too
+            return str(value)
+    except Exception:  # no secrets file locally, or not running under Streamlit
+        pass
+    return default
+
+
 # ---- model -------------------------------------------------------------
 MODEL_NAME = os.getenv("HSD_BASE_MODEL", "bert-base-uncased")
 MAX_LEN = int(os.getenv("HSD_MAX_LEN", "128"))
@@ -13,7 +31,7 @@ DROPOUT = 0.3  # matches the training architecture of the student
 # Hugging Face Hub and cached. A private model repo needs HF_TOKEN set as a
 # Space secret.
 LOCAL_WEIGHTS = os.getenv("HSD_WEIGHTS_PATH", "student_best.pt")
-HUB_REPO = os.getenv("HSD_MODEL_REPO", "")          # e.g. "sanjida-khanom/hate-speech-distilled-bert"
+HUB_REPO = _setting("HSD_MODEL_REPO")          # e.g. "sanjida-khanom/hate-speech-distilled-bert"
 HUB_FILE = os.getenv("HSD_MODEL_FILE", "student_best.pt")
 
 # ---- Bangla accessibility layer -----------------------------------------
