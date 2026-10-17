@@ -1,5 +1,11 @@
-streamlit
-torch
-transformers
-sentencepiece
-sacremoses
+# CPU-only PyTorch keeps the image small and starts faster on free hardware
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+transformers>=4.40,<5
+sentencepiece>=0.1.99
+sacremoses>=0.0.53
+huggingface_hub>=0.23
+streamlit>=1.44
+plotly>=5.20
+pandas>=2.0
+numpy>=1.24

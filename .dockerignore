@@ -1,0 +1,8 @@
+.git
+.github
+tests
+venv
+.venv
+__pycache__
+*.pt
+fig8_streamlit_ui_screenshot.png

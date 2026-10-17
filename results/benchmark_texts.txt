@@ -1,0 +1,12 @@
+Thank you for sharing the dataset.
+The lecture starts at nine tomorrow morning.
+I disagree with your argument, but I respect the way you made it.
+Our team finished the evaluation and the results look promising for the next submission.
+Can someone explain how the tokenizer handles very long sentences in this model?
+This movie was boring and far too long.
+People like you are disgusting trash.
+You are an idiot and nobody wants you here.
+The new library has a quiet reading room on the third floor, which is perfect for studying before exams.
+Climate policy needs evidence, patience and cooperation between countries, not slogans.
+আজকের সেমিনারটা খুব শিক্ষণীয় ছিল।
+তোমার উপস্থাপনাটা খুব সুন্দর হয়েছে।

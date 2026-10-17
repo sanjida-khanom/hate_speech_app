@@ -1,0 +1,41 @@
+name: Test and deploy to Hugging Face
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test dependencies (no torch needed)
+        run: pip install "streamlit>=1.44" "plotly>=5.20" "pandas>=2.0" numpy pytest
+      - name: Run tests with the stub backend
+        env:
+          HSD_BACKEND: stub
+        run: pytest -q
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "huggingface_hub>=0.23"
+      - name: Upload to the Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
+          HSD_MODEL_REPO: ${{ vars.HSD_MODEL_REPO }}
+        run: python scripts/deploy_space.py

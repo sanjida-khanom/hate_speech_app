@@ -1,0 +1,35 @@
+{
+  "_readme": "Numbers shown on the Research page. Only fill fields with values from the paper or its evaluation logs. Any block left null is simply not plotted.",
+
+  "paper": {
+    "title": "DynamicFusionNet: Distilling a Cross-Attention Transformer Ensemble for Efficient and Explainable Translation-Mediated Hate Speech Detection",
+    "authors": "M. A. Rahman, S. Khanom, M. A. Rahman, F. S. Richi, M. A. Rahaman, A. B. M. S. Ali",
+    "venue": "Expert Systems with Applications (Elsevier)",
+    "status": "Under review"
+  },
+
+  "student": {
+    "name": "Distilled BERT-base student",
+    "accuracy": 0.9104,
+    "roc_auc": 0.9652,
+    "params_millions": 109.5,
+    "size_mb": 418,
+    "compression_vs_ensemble": 4.8,
+    "threshold": 0.51,
+    "max_tokens": 128
+  },
+
+  "teachers": ["BERT", "XLM-RoBERTa", "DeBERTa"],
+
+  "confusion_matrix": null,
+  "_confusion_matrix_format": {"labels": ["Non-Hate", "Hate"], "matrix": [[0, 0], [0, 0]]},
+
+  "roc_curve": null,
+  "_roc_curve_format": {"fpr": [0.0, 1.0], "tpr": [0.0, 1.0]},
+
+  "model_comparison": null,
+  "_model_comparison_format": [{"model": "Teacher ensemble", "accuracy": 0.0, "roc_auc": 0.0, "params_millions": 0.0, "latency_ms": 0.0}],
+
+  "reliability": null,
+  "_reliability_format": {"bin_confidence": [0.55, 0.65], "bin_accuracy": [0.5, 0.6], "ece": 0.0}
+}

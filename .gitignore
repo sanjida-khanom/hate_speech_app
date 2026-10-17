@@ -1,0 +1,9 @@
+# model weights live on the Hugging Face Hub, never in git
+*.pt
+*.bin
+*.safetensors
+__pycache__/
+.pytest_cache/
+venv/
+.venv/
+.env

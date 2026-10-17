@@ -1,138 +1,98 @@
-# 🛡️ Hate Speech Detection App
-
-A Streamlit web app that detects hate speech in text using a lightweight, distilled BERT model. It takes a research model all the way to a working app anyone can use.
-
+---
+title: Bilingual Hate Speech Detector
+emoji: 🛡️
+colorFrom: blue
+colorTo: gray
+sdk: docker
+app_port: 7860
+pinned: false
+short_description: Distilled BERT hate speech detection for Bangla and English
 ---
 
-## ⚠️ Important Notice
+# 🛡️ Bilingual Hate Speech Detector (Bangla / English)
 
-**This app is part of an ongoing research project.** It is for **research and educational use only.**
+A real-time web app for the research paper **"DynamicFusionNet: Distilling a Cross-Attention
+Transformer Ensemble for Efficient and Explainable Translation-Mediated Hate Speech Detection"**
+(under review, *Expert Systems with Applications*).
 
-**Do not use it for:**
-- ❌ Generating hate speech or toxic content
-- ❌ Harassment or abuse
-- ❌ Harming individuals or communities
-- ❌ Getting around platform content rules
+A BERT + XLM-RoBERTa + DeBERTa ensemble is distilled into one BERT-base student that runs on a CPU.
+Bangla text is translated to English first, and every prediction comes with an explanation and an
+uncertainty estimate.
 
-**Misuse is strictly prohibited.**
-
----
-
-## 👥 Authors
-
-**Equal contribution:**
-- Sanjida Khanom ([@sanjida-khanom](https://github.com/sanjida-khanom))
-- Mohammod Ashikur Rahman ([@ashikbuilds](https://github.com/ashikbuilds))
----
-
-## 🎯 Why we Built This
-
-- Big language models detect hate speech well, but they are too heavy to run in real time.
-- I compressed a large model into a small, fast one that keeps almost the same accuracy.
-- Then I turned it into a simple web app so anyone can try it — not just a notebook.
-- Hate speech detection is a real problem, so it felt worth solving.
-
----
-
-## 📊 Model Performance
+**Live demo:** https://huggingface.co/spaces/sanjida-khanom/hate-speech-detector
 
 | Metric | Value |
 |---|---|
 | Accuracy | 91.04% |
 | ROC-AUC | 0.9652 |
-| Model Size | 109M parameters |
+| Parameters | 109.5 M |
+| Compression vs ensemble | 4.8× |
+| Decision threshold | 0.51 |
 
----
+## ⚠️ Responsible use
 
-## 🧠 Skills we Used
+Part of an ongoing research project, for **research and educational use only**.
+Do not use it to generate hateful content, harass people, target individuals or communities,
+or evade platform rules. Predictions can be wrong; a human should review real moderation decisions.
 
-- **Machine Learning:** knowledge distillation (making a small model learn from a big one)
-- **NLP:** fine-tuning a BERT model with Hugging Face
-- **Model compression:** keeping accuracy while making the model smaller and faster
-- **Evaluation:** measuring accuracy, ROC-AUC, and tuning the threshold
-- **Deployment:** building the app with Streamlit
-- **Good practices:** clean code, clear setup, and documentation
+## 👥 Authors
 
----
+Equal contribution: **Sanjida Khanom** ([@sanjida-khanom](https://github.com/sanjida-khanom)) and
+**Mohammod Ashikur Rahman** ([@ashikbuilds](https://github.com/ashikbuilds)).
 
-## 📈 What we've Learned
+## What the app does
 
-- How to take a model from research all the way to a real, working app.
-- How model distillation actually works, by building it myself.
-- How to judge a model properly — not just by accuracy, but ROC-AUC too.
-- How to think about responsible AI and prevent misuse.
-- How to finish a full project end to end, on my own.
+| Page | What it shows |
+|---|---|
+| **Detector** | Label, probability, translation (for Bangla), word-level explanation, MC-dropout uncertainty, live latency |
+| **Batch Analysis** | Upload a CSV or paste lines; score distribution, labels by language, downloadable results |
+| **Live Analytics** | Real measurements from your session: latency breakdown and p95, score timeline, borderline share; one-click latency benchmark |
+| **Research** | Method diagram, model card, compression and performance plots, limitations |
 
----
+Definitions follow Fig. 8 of the paper: decision margin = |P(hate) − 0.51|, entropy in bits,
+MC-dropout mean ± std with a 95% interval and label stability.
 
-## 📁 Setup
+## Project structure
 
-**Prerequisites:** Python 3.9+ and pip
-
-**Windows:**
-```powershell
-git clone https://github.com/sanjida-khanom/hate_speech_app.git
-cd hate_speech_app
-python -m venv venv
-venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-streamlit run app.py
+```
+app.py                     entry point and page navigation
+views/                     Detector, Batch Analysis, Live Analytics, Research
+hsd/
+  config.py                every setting, overridable by environment variables
+  model.py                 BERT student (and a test-only stub)
+  translate.py             Bangla → English (Helsinki-NLP/opus-mt-bn-en)
+  pipeline.py              prediction, uncertainty, explanation, timings
+  text.py, ui.py           language detection, limits, shared UI
+results/metrics.json       published numbers for the Research page
+tests/                     unit tests and page smoke tests
+Dockerfile                 Hugging Face Space image
+.github/workflows/deploy.yml   test, then auto-deploy on every push
 ```
 
-**Linux/macOS:**
+## Run locally
+
 ```bash
 git clone https://github.com/sanjida-khanom/hate_speech_app.git
 cd hate_speech_app
-python3 -m venv venv
-source venv/bin/activate
+python -m venv venv
+venv\Scripts\activate          # Windows  (macOS/Linux: source venv/bin/activate)
 pip install -r requirements.txt
+# put student_best.pt in this folder, OR set HSD_MODEL_REPO to the Hub repo
 streamlit run app.py
 ```
 
-Open the app at: **http://localhost:8501**
+To work on the interface without the weights, use the test-only stub (a red banner makes it obvious):
+`HSD_BACKEND=stub streamlit run app.py`
 
----
+## Model weights
 
-## 📦 Model Weights
+The trained weights (`student_best.pt`, ~418 MB) are hosted on the Hugging Face Hub and downloaded
+on first start. They are available from the authors on request.
 
-The trained weights (`student_best.pt`, ~418 MB) are available on request from the authors. Place the file in the project root folder.
+## Deployment
 
----
+Every push to `main` runs the tests and redeploys the Space automatically. See [DEPLOY.md](DEPLOY.md).
 
-## 🖥️ How to Use
+## Research status
 
-1. Type or paste text in the input box
-2. Click **Analyze**
-3. See the result (Hate Speech / Non-Hate) and the confidence score
-
----
-
-## ⚙️ Configuration
-
-Key settings in `app.py`:
-
-| Parameter | Default |
-|---|---|
-| Model | bert-base-uncased |
-| Max Length | 128 tokens |
-| Threshold | 0.51 |
-
----
-
-## 📋 Requirements
-
-```
-streamlit>=1.28.0
-torch>=2.0.0
-transformers>=4.30.0
-sentencepiece>=0.1.99
-sacremoses>=0.0.53
-```
-
----
-
-## 🔬 Research Status
-
-This project is part of ongoing research on model compression and ensemble learning. **Publication is pending.**
-
----
+Under review at *Expert Systems with Applications* (Elsevier).
