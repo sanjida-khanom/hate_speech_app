@@ -45,6 +45,13 @@ if not log:
     st.stop()
 
 df = pd.DataFrame(log)
+# Older log entries (from before an app update) may lack newer fields.
+for col in ("source", "language", "chars", "words", "p_hate", "label", "margin", "band",
+            "end_to_end_ms", "inference_ms", "translation_ms", "mc_std"):
+    if col not in df.columns:
+        df[col] = None
+for col in ("end_to_end_ms", "inference_ms", "translation_ms", "mc_std", "margin", "p_hate"):
+    df[col] = pd.to_numeric(df[col], errors="coerce")
 df["request"] = np.arange(1, len(df) + 1)
 lat = df["end_to_end_ms"].dropna()
 timed = df.dropna(subset=["end_to_end_ms"])

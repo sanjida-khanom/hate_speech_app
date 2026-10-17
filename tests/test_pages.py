@@ -27,3 +27,14 @@ def test_benchmark_fills_analytics():
     at.button[0].click().run()
     assert not at.exception
     assert len(at.session_state["log"]) >= 10
+
+
+def test_analytics_survives_old_log_entries():
+    """Session logs written by an older app version lack newer fields."""
+    at = AppTest.from_file(ROOT + "views/analytics.py", default_timeout=60)
+    at.session_state["log"] = [{"time": "00:00:00", "source": "detector", "language": "en", "chars": 10,
+                                "words": 2, "p_hate": 0.9, "label": "Hate Speech", "margin": 0.39,
+                                "end_to_end_ms": 120.0, "inference_ms": 80.0, "translation_ms": None,
+                                "mc_std": 0.02}]
+    at.run()
+    assert not at.exception

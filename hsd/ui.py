@@ -100,9 +100,9 @@ def people_html(compact: bool = True) -> str:
     sup = config.SUPERVISOR
     note = '<div class="r" style="margin-top:4px">Equal contribution</div>' if config.EQUAL_CONTRIBUTION else ""
     return (
-        '<div class="who"><div class="lab">Authors</div>'
+        '<div class="who"><div class="lab">Web app developed &amp; deployed by</div>'
         + '<div style="display:grid;gap:8px">' + "".join(rows) + "</div>" + note
-        + '<div class="lab">Supervisor</div>'
+        + '<div class="lab">Under the supervision of</div>'
         + f'<div><span class="n">{html.escape(sup["name"])}</span><br>'
           f'<span class="r">{html.escape(sup["role"])}, {html.escape(sup["org"])}</span></div></div>'
     )
@@ -154,8 +154,8 @@ def kpis(items: list[tuple]):
 def footer():
     names = " · ".join(a["name"] for a in config.AUTHORS)
     st.markdown(
-        f'<div class="foot">{names} · Supervised by {config.SUPERVISOR["name"]}, '
-        f'{config.SUPERVISOR["org"]}. Research and educational use only.</div>',
+        f'<div class="foot">Web app developed and deployed by {names}, under the supervision of {config.SUPERVISOR["name"]}, '
+        f'{config.SUPERVISOR["org"]}. Research paper authors are listed on the Research page.</div>',
         unsafe_allow_html=True,
     )
 

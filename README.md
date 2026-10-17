@@ -35,14 +35,16 @@ Part of an ongoing research project, for **research and educational use only**.
 Do not use it to generate hateful content, harass people, target individuals or communities,
 or evade platform rules. Predictions can be wrong; a human should review real moderation decisions.
 
-## 👥 Authors
+## 👥 Web app developed and deployed by
 
 **Mohammod Ashikur Rahman** — Software Engineer L1, bKash Limited ([@ashikbuilds](https://github.com/ashikbuilds))
 **Sanjida Khanom** — Research Assistant, Department of CSE, BUBT ([@sanjida-khanom](https://github.com/sanjida-khanom))
 *(equal contribution)*
 
-**Supervisor:** Md. Ashiqur Rahman, Assistant Professor, Department of CSE,
+**Under the supervision of:** Md. Ashiqur Rahman, Assistant Professor, Department of CSE,
 Bangladesh University of Business and Technology (BUBT)
+
+The research paper's own author list is shown on the app's Research page.
 
 ## What the app does
 

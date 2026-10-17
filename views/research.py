@@ -25,7 +25,7 @@ hero("The research behind this app", paper["title"],
       f"{S['compression_vs_ensemble']}× compression"], gold=2)
 
 tab_over, tab_method, tab_results, tab_card, tab_people, tab_limits = st.tabs(
-    ["Overview", "Method", "Results", "Model card", "Authors & citation", "Limitations"])
+    ["Overview", "Method", "Results", "Model card", "App team & citation", "Limitations"])
 
 # --------------------------------------------------------------------------
 with tab_over:
@@ -174,7 +174,7 @@ with tab_card:
 with tab_people:
     c1, c2 = st.columns([1, 1.3], gap="large")
     with c1:
-        section("People behind this app")
+        section("Who built this web app", "The paper's authors are listed in the header above; this is the team that built and deployed the live demo.")
         with st.container(border=True):
             st.markdown(people_html(compact=False), unsafe_allow_html=True)
     with c2:
